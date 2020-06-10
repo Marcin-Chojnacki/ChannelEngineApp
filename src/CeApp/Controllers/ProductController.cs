@@ -1,7 +1,5 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using CeApp.ApiDataAccess.Providers;
 using CeApp.Services.Product;
 using CeApp.Services.Utils;
 
@@ -11,10 +9,9 @@ namespace CeApp.Controllers
     {
         private readonly IProductService _productService;
 
-//        public ProductController(IProductService productService)
-        public ProductController()
+        public ProductController(IProductService productService)
         {
-            _productService = new ProductService(new ProductProvider(new HttpClient()));
+            _productService = productService;
         }
 
         public async Task<ActionResult> Index()

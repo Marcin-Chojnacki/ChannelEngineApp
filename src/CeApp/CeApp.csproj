@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.3.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.9.3\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
     </Reference>
@@ -187,7 +190,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
@@ -203,6 +208,10 @@
     <ProjectReference Include="..\CeApp.DataObjects\CeApp.DataObjects.csproj">
       <Project>{CCD0CEA1-A38B-43DE-8F63-F9CDD3BA15DF}</Project>
       <Name>CeApp.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CeApp.DI\CeApp.DI.csproj">
+      <Project>{E76BBE1A-E047-41B1-8D95-CCEA692B847C}</Project>
+      <Name>CeApp.DI</Name>
     </ProjectReference>
     <ProjectReference Include="..\CeApp.Services\CeApp.Services.csproj">
       <Project>{90E61726-243B-4875-BF69-3B28C8D3B75C}</Project>

@@ -2,10 +2,8 @@
 
 namespace CeApp.ApiDataAccess
 {
-    public class ApiConfig : ConfigurationSection
+    public class ApiConfig : ConfigurationSection, IApiConfig
     {
-        public static ApiConfig Get() => ConfigurationManager.GetSection("ChannelEngineApiConfig") as ApiConfig;
-
         [ConfigurationProperty("BaseUrl", IsRequired = true)]
         public string BaseUrl => (string)this["BaseUrl"];
 

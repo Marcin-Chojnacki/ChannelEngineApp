@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IApiConfig.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="DataModels\BaseItemResponse.cs" />
     <Compile Include="DataModels\BaseBundleResponse.cs" />

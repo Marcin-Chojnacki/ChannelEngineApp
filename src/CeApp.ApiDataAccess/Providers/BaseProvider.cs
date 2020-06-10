@@ -9,12 +9,12 @@ namespace CeApp.ApiDataAccess.Providers
 {
     public abstract class BaseProvider
     {
-        protected readonly ApiConfig ApiConfig;
+        protected readonly IApiConfig ApiConfig;
         protected readonly HttpClient HttpClient;
 
-        protected BaseProvider(HttpClient httpClient)
+        protected BaseProvider(IApiConfig apiConfig, HttpClient httpClient)
         {
-            ApiConfig = ApiConfig.Get();
+            ApiConfig = apiConfig;
             HttpClient = httpClient;
             HttpClient.DefaultRequestHeaders.Add(ApiConfig.ApiKeyHeader, ApiConfig.ApiKeyValue);
         }

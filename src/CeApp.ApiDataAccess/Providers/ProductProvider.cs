@@ -10,7 +10,7 @@ namespace CeApp.ApiDataAccess.Providers
 {
     public class ProductProvider : BaseProvider, IProductProvider
     {
-        public ProductProvider(HttpClient httpClient) : base(httpClient)
+        public ProductProvider(IApiConfig apiConfig, HttpClient httpClient) : base(apiConfig, httpClient)
         {
         }
 

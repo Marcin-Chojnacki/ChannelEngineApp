@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CeApp.DI;
 
 namespace CeApp
 {
@@ -12,6 +13,8 @@ namespace CeApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            DiConfig.RegisterTypesForMvc(typeof(MvcApplication).Assembly);
         }
     }
 }
