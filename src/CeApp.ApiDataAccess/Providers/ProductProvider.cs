@@ -27,7 +27,7 @@ namespace CeApp.ApiDataAccess.Providers
             var productsBundle =
                 await GetAsync<ProductItem>(HttpClient, CreateUrl(ApiConfig.ProductsPath, merchantProductNo));
 
-            return productsBundle.Success ? productsBundle.Content : null; //todo
+            return productsBundle.Success ? productsBundle.Content : null;
         }
     }
 }
