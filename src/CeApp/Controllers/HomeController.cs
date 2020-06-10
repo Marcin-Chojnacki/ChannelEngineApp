@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Mvc;
-using CeApp.ApiDataAccess.Providers;
+﻿using System.Web.Mvc;
 
 namespace CeApp.Controllers
 {
@@ -12,13 +8,5 @@ namespace CeApp.Controllers
         {
             return View();
         }
-
-        public async Task<ActionResult> Products()
-        {
-            var productProvider = new ProductProvider(new HttpClient());
-            var model = await productProvider.GetProductsAsync(new Dictionary<string, string>());
-            return View(model);
         }
-
-    }
 }

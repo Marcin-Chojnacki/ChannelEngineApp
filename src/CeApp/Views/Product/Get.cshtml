@@ -1,0 +1,13 @@
+﻿@model CeApp.DataObjects.Product.Product
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Product Details: @Model.Name</h2>
+<ul>
+    <li>@(Model.Name ?? "[Missing Name]")</li>
+    <li>@Model.MerchantProductNo</li>
+    <li>@Model.Stock</li>
+    <li>@Model.Price</li>
+</ul>

@@ -13,6 +13,7 @@
         <th>Product No</th>
         <th>Stock</th>
         <th>Price</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -23,6 +24,11 @@
             <td>@product.MerchantProductNo</td>
             <td>@product.Stock</td>
             <td>@product.Price</td>
+            <td>
+                <a class="btn btn-default" href="@Url.Action("Get", new {merchantProductNo = product.MerchantProductNo})">
+                    Details
+                </a>
+            </td>
         </tr>
     }
     </tbody>

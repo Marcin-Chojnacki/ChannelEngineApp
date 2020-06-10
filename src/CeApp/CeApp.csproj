@@ -126,6 +126,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,10 +167,12 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Products.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InternalError.cshtml" />
+    <Content Include="Views\Product\Get.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -192,9 +196,17 @@
       <Project>{22aea57a-d55d-4956-8fca-ffa026700582}</Project>
       <Name>CeApp.ApiDataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CeApp.DataAccess\CeApp.DataAccess.csproj">
+      <Project>{3595CABF-04A1-4146-992E-3D97ED32E9CD}</Project>
+      <Name>CeApp.DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CeApp.DataObjects\CeApp.DataObjects.csproj">
       <Project>{CCD0CEA1-A38B-43DE-8F63-F9CDD3BA15DF}</Project>
       <Name>CeApp.DataObjects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CeApp.Services\CeApp.Services.csproj">
+      <Project>{90E61726-243B-4875-BF69-3B28C8D3B75C}</Project>
+      <Name>CeApp.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
