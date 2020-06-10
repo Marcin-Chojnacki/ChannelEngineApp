@@ -6,6 +6,6 @@ namespace CeApp.DataAccess
 {
     public interface IOrderProvider
     {
-        Task<IEnumerable<Order>> GetOrdersAsync();
+        Task<IEnumerable<Order>> GetOrdersAsync(IDictionary<string, string> filters);
     }
 }
