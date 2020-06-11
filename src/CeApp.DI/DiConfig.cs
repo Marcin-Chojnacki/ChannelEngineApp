@@ -20,8 +20,6 @@ namespace CeApp.DI
         {
             var builder = new ContainerBuilder();
 
-            builder.Register(ctx => ConfigurationManager.GetSection("ChannelEngineApiConfig") as ApiConfig).As<IApiConfig>();
-
             builder.RegisterControllers(mvcAssembly);
             RegisterTypes(builder);
 
@@ -34,8 +32,6 @@ namespace CeApp.DI
         public static void RegisterTypesForCui()
         {
             var builder = new ContainerBuilder();
-
-            builder.Register(ctx => ConfigurationManager.GetSection("ChannelEngineApiConfig") as ApiConfig).As<IApiConfig>();
 
             RegisterTypes(builder);
 
@@ -51,6 +47,7 @@ namespace CeApp.DI
         {
             builder.RegisterType<OrderProvider>().As<IOrderProvider>().SingleInstance();
             builder.RegisterType<ProductProvider>().As<IProductProvider>().SingleInstance();
+            builder.RegisterType<ApiConfig>().As<IApiConfig>().SingleInstance(); //todo move
 
             builder.RegisterType<OrderService>().As<IOrderService>();
             builder.RegisterType<ProductService>().As<IProductService>();

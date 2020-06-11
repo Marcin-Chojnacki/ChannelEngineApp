@@ -24,7 +24,7 @@ namespace CeApp.Services.Order
             {
                 var filters = new Dictionary<string, string>();
                 if (orderStatus != OrderStatus.Empty)
-                    filters.Add("statuses", orderStatus.Name);
+                    filters.Add(OrderFilters.Status, orderStatus.Name);
 
                 var orders = await _orderProvider.GetOrdersAsync(filters);
                 return orders == null

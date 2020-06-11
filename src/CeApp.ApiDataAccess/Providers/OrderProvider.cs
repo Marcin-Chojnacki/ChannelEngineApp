@@ -19,7 +19,9 @@ namespace CeApp.ApiDataAccess.Providers
 
         public async Task<IEnumerable<Order>> GetOrdersAsync(IDictionary<string, string> filters)
         {
-            var response = await GetAsync(HttpClient, CreateUrl(filters, ApiConfig.OrdersPath));
+            var mappedFilters = filters.ToDictionary(p => ApiConfig.Orders.GetQueryParam(p.Key), p => p.Value);
+
+            var response = await GetAsync(HttpClient, CreateUrl(mappedFilters, ApiConfig.Orders.BasePath));
 
             var ordersBundle = JsonConvert.DeserializeObject<OrdersBundle>(response, _orderStatusConverter);
 

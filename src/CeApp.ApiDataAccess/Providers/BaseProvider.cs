@@ -23,8 +23,6 @@ namespace CeApp.ApiDataAccess.Providers
             using (var response = await httpClient.GetAsync(url))
             {
                 return await response.Content.ReadAsStringAsync();
-
-//                return JsonConvert.DeserializeObject<T>(responseText);
             }
         }
 

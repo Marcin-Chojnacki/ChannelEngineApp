@@ -17,7 +17,9 @@ namespace CeApp.ApiDataAccess.Providers
 
         public async Task<IEnumerable<Product>> GetProductsAsync(IDictionary<string, string> filters)
         {
-            var response = await GetAsync(HttpClient, CreateUrl(filters, ApiConfig.ProductsPath));
+            var mappedFilters = filters.ToDictionary(p => ApiConfig.Orders.GetQueryParam(p.Key), p => p.Value);
+
+            var response = await GetAsync(HttpClient, CreateUrl(mappedFilters, ApiConfig.Products.BasePath));
 
             var productsBundle = JsonConvert.DeserializeObject<ProductsBundle>(response);
 
@@ -26,7 +28,7 @@ namespace CeApp.ApiDataAccess.Providers
 
         public async Task<Product> GetProductAsync(string merchantProductNo)
         {
-            var response = await GetAsync(HttpClient, CreateUrl(ApiConfig.ProductsPath, merchantProductNo));
+            var response = await GetAsync(HttpClient, CreateUrl(ApiConfig.Products.BasePath, merchantProductNo));
 
             var productsBundle = JsonConvert.DeserializeObject<ProductItem>(response);
 
