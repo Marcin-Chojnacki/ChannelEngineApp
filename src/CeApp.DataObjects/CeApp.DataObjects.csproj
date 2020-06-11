@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Order\Line.cs" />
     <Compile Include="Order\Order.cs" />
     <Compile Include="Order\OrderStatus.cs" />
     <Compile Include="Order\OrderStatusConverter.cs" />

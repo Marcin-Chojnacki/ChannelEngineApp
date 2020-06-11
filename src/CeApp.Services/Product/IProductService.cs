@@ -8,6 +8,8 @@ namespace CeApp.Services.Product
     {
         Task<(ResultStatus Status, IEnumerable<DataObjects.Product.Product> Products)> GetProductsAsync(string searchQuery);
 
+        Task<(ResultStatus, IEnumerable<Top5Product>)> Get5TopProductsAsync();
+        
         Task<(ResultStatus Status, DataObjects.Product.Product Product)> GetProductAsync(string merchantProductNo);
     }
 }

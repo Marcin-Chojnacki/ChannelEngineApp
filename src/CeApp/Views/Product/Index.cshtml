@@ -23,6 +23,7 @@
         <tr>
             <th>Name</th>
             <th>Product No</th>
+            <th>EAN</th>
             <th>Stock</th>
             <th>Price</th>
             <th></th>
@@ -34,6 +35,7 @@
             <tr>
                 <td>@(product.Name ?? "[Missing Name]")</td>
                 <td>@product.MerchantProductNo</td>
+                <td>@product.Ean</td>
                 <td>@product.Stock</td>
                 <td>@product.Price</td>
                 <td>

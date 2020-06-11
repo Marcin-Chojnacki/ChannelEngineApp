@@ -44,6 +44,7 @@
     <Compile Include="Order\IOrderService.cs" />
     <Compile Include="Order\OrderFilters.cs" />
     <Compile Include="Order\OrderService.cs" />
+    <Compile Include="Product\Top5Product.cs" />
     <Compile Include="Product\IProductService.cs" />
     <Compile Include="Product\ProductFilters.cs" />
     <Compile Include="Product\ProductService.cs" />

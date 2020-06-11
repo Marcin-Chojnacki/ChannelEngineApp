@@ -8,12 +8,19 @@
 </div>
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5 col-md-offset-1">
         <h2>Orders</h2>
-        <p><a class="btn btn-default" href="@Url.Action("Index", "Order", new {orderStatusName=OrderStatus.InProgress.Name})">Go to Orders</a></p>
+        <p>Here you can check all Orders with their details. You can also filter them by Status.</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Order", new {orderStatusName = OrderStatus.InProgress.Name})">Go to Orders</a>
+        </p>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
         <h2>Products</h2>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Product")">Go To Products</a></p>
+        <p>Here you can display list of all available Products. You can also check TOP 5 Products for Orders, that are currently processed.</p>
+        <p>
+            <a class="btn btn-default" href="@Url.Action("Index", "Product")">Go To All Products</a>
+            <a class="btn btn-default" href="@Url.Action("GetTop5", "Product")">TOP 5 Products</a>
+        </p>
     </div>
 </div>

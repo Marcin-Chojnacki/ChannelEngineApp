@@ -4,10 +4,28 @@
     ViewBag.Title = "Products";
 }
 
-<h2>Product Details: @Model.Name</h2>
-<ul>
-    <li>@(Model.Name ?? "[Missing Name]")</li>
-    <li>@Model.MerchantProductNo</li>
-    <li>@Model.Stock</li>
-    <li>@Model.Price</li>
-</ul>
+<h2>@Model.Name</h2>
+<hr/>
+
+<h4>Product Details:</h4>
+<table class="table table-hover table-bordered">
+    <tbody>
+    <tr>
+        <td>Name</td>
+        <td>@(Model.Name ?? "[Missing Name]")</td>
+    </tr>
+    <tr>
+        <td>Product No</td>
+        <td>@Model.MerchantProductNo</td>
+    </tr>
+    <tr>
+        <td>Stock</td>
+        <td>@Model.Stock</td>
+    </tr>    
+    <tr>
+        <td>Price</td>
+        <td>@Model.Price</td>
+    </tr>
+    </tbody>
+</table>
+

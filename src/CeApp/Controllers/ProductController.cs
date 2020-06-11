@@ -23,6 +23,15 @@ namespace CeApp.Controllers
             return RedirectToAction("InternalError", "Error");
         }
 
+        public async Task<ActionResult> GetTop5()
+        {
+            var (status, products) = await _productService.Get5TopProductsAsync();
+            if (status == ResultStatus.Success)
+                return View(products);
+
+            return RedirectToAction("InternalError", "Error");
+        }
+
         public async Task<ActionResult> Get(string merchantProductNo)
         {
             var (status, product) = await _productService.GetProductAsync(merchantProductNo);
