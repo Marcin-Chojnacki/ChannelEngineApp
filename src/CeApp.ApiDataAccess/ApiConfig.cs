@@ -11,7 +11,7 @@ namespace CeApp.ApiDataAccess
             var apiConfigSection = ConfigurationManager.GetSection("channelEngineApiConfig") as ApiConfigSection;
 
             Orders = new OrdersConfig(apiConfigSection);
-            Products = new ProductsConfig();
+            Products = new ProductsConfig(apiConfigSection);
         }
 
         public string ApiKeyHeader => ConfigurationManager.AppSettings["channelEngineApiKeyHeader"];
@@ -50,13 +50,34 @@ namespace CeApp.ApiDataAccess
 
     internal class ProductsConfig : IProductsConfig
     {
+        private readonly ApiConfigSection _configSection;
+        private static readonly IDictionary<string, string> FilterMapping = new Dictionary<string, string>
+        {
+            {"productSearchQuery", "search"}
+        };
+
+        public ProductsConfig(ApiConfigSection configSection)
+        {
+            _configSection = configSection;
+        }
+
         public string BasePath => "products";
+
+        public string GetQueryParam(string key)
+        {
+            if (FilterMapping.TryGetValue(_configSection.ProductFiltersMappingProperty.GetValue(key), out var param))
+                return param;
+            throw new ArgumentOutOfRangeException(nameof(key), $"Not found following element: {key}");
+        }
     }
 
     public class ApiConfigSection : ConfigurationSection
     {
         [ConfigurationProperty("orderFiltersMapping", IsRequired = true)]
         public BaseConfigCollection OrderFiltersMappingProperty => (BaseConfigCollection) this["orderFiltersMapping"];
+
+        [ConfigurationProperty("productFiltersMapping", IsRequired = true)]
+        public BaseConfigCollection ProductFiltersMappingProperty => (BaseConfigCollection) this["productFiltersMapping"];
     }
 
 }

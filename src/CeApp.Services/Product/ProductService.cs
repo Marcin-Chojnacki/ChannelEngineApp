@@ -16,11 +16,15 @@ namespace CeApp.Services.Product
             _productProvider = productProvider;
         }
 
-        public async Task<(ResultStatus, IEnumerable<DataObjects.Product.Product>)> GetProductsAsync()
+        public async Task<(ResultStatus, IEnumerable<DataObjects.Product.Product>)> GetProductsAsync(string searchQuery)
         {
             try
             {
-                var products = await _productProvider.GetProductsAsync(new Dictionary<string, string>());
+                var filters = new Dictionary<string, string>();
+                if (!string.IsNullOrEmpty(searchQuery))
+                    filters.Add(ProductFilters.Search, searchQuery);
+
+                var products = await _productProvider.GetProductsAsync(filters);
                 return products == null
                     ? (ResultStatus.UnknownError, null)
                     : (ResultStatus.Success, products.OrderBy(p => p.MerchantProductNo));

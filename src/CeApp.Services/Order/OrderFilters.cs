@@ -2,6 +2,6 @@
 {
     internal static class OrderFilters
     {
-        public static string Status => "orderStatusQuery";
+        public static string Status => "orderStatus";
     }
 }

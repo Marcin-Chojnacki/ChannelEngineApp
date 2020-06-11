@@ -14,9 +14,9 @@ namespace CeApp.Controllers
             _productService = productService;
         }
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string search = null)
         {
-            var (status, products) = await _productService.GetProductsAsync();
+            var (status, products) = await _productService.GetProductsAsync(search);
             if(status == ResultStatus.Success)
                 return View(products);
 

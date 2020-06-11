@@ -23,5 +23,7 @@
     public interface IProductsConfig
     {
         string BasePath { get; }
-    }
+
+        string GetQueryParam(string key);
+        }
 }

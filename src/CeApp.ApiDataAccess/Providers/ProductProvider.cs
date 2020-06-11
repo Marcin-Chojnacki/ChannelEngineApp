@@ -17,7 +17,7 @@ namespace CeApp.ApiDataAccess.Providers
 
         public async Task<IEnumerable<Product>> GetProductsAsync(IDictionary<string, string> filters)
         {
-            var mappedFilters = filters.ToDictionary(p => ApiConfig.Orders.GetQueryParam(p.Key), p => p.Value);
+            var mappedFilters = filters.ToDictionary(p => ApiConfig.Products.GetQueryParam(p.Key), p => p.Value);
 
             var response = await GetAsync(HttpClient, CreateUrl(mappedFilters, ApiConfig.Products.BasePath));
 
