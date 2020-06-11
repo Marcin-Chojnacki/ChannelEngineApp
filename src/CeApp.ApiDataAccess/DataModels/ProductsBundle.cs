@@ -1,6 +1,6 @@
 ﻿using CeApp.DataObjects.Product;
 
-namespace ApiDataAccess.DataModels
+namespace CeApp.ApiDataAccess.DataModels
 {
     internal class ProductsBundle : BaseBundleResponse<Product>
     {

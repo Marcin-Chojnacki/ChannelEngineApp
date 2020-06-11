@@ -1,4 +1,4 @@
-﻿namespace ApiDataAccess.DataModels
+﻿namespace CeApp.ApiDataAccess.DataModels
 {
     internal abstract class BaseItemResponse<T> : BaseResponse
     {

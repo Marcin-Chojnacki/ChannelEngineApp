@@ -3,7 +3,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl;
-using Newtonsoft.Json;
 
 namespace CeApp.ApiDataAccess.Providers
 {
@@ -19,13 +18,13 @@ namespace CeApp.ApiDataAccess.Providers
             HttpClient.DefaultRequestHeaders.Add(ApiConfig.ApiKeyHeader, ApiConfig.ApiKeyValue);
         }
 
-        protected async Task<T> GetAsync<T>(HttpClient httpClient, string url)
+        protected async Task<string> GetAsync(HttpClient httpClient, string url)
         {
             using (var response = await httpClient.GetAsync(url))
             {
-                var responseText = await response.Content.ReadAsStringAsync();
+                return await response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<T>(responseText);
+//                return JsonConvert.DeserializeObject<T>(responseText);
             }
         }
 

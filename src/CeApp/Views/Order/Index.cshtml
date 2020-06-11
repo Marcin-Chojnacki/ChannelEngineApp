@@ -1,0 +1,47 @@
+﻿@using CeApp.DataObjects.Order
+@model System.Collections.Generic.IEnumerable<CeApp.DataObjects.Order.Order>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+<hr />
+
+@using (Html.BeginForm("Index", "Order", FormMethod.Get, new { id = "ordersForm" }))
+{
+    <div class="form-group row">
+        <label class="col-sm-2 text-right">Filter by status:</label>
+        <div class="col-sm-10">
+            @Html.DropDownList("orderStatusName",
+                new SelectList(OrderStatus.GetAll().Select(x => new { key = x.Name, value = x.DisplayName}), "key", "value"),
+                "All",
+                new { @class = "form-control" })
+        </div>
+    </div>
+
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Order Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.Id</td>
+                <td>@order.OrderDate</td>
+                <td>@order.Status.DisplayName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script src="/Scripts/Order/ordersTable.js"></script>
+}

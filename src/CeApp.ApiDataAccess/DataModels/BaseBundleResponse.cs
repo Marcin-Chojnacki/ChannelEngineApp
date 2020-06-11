@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ApiDataAccess.DataModels
+namespace CeApp.ApiDataAccess.DataModels
 {
     internal abstract class BaseBundleResponse<T> : BaseResponse
     {

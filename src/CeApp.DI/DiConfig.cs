@@ -7,6 +7,7 @@ using Autofac.Integration.Mvc;
 using CeApp.ApiDataAccess;
 using CeApp.ApiDataAccess.Providers;
 using CeApp.DataAccess;
+using CeApp.Services.Order;
 using CeApp.Services.Product;
 
 namespace CeApp.DI
@@ -48,8 +49,10 @@ namespace CeApp.DI
 
         private static void RegisterTypes(ContainerBuilder builder)
         {
+            builder.RegisterType<OrderProvider>().As<IOrderProvider>().SingleInstance();
             builder.RegisterType<ProductProvider>().As<IProductProvider>().SingleInstance();
 
+            builder.RegisterType<OrderService>().As<IOrderService>();
             builder.RegisterType<ProductService>().As<IProductService>();
 
             builder.RegisterType<HttpClientHandler>().As<HttpMessageHandler>().AsSelf();

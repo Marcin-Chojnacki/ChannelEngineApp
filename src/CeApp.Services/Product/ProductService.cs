@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CeApp.DataAccess;
 using CeApp.Services.Utils;
@@ -20,7 +21,9 @@ namespace CeApp.Services.Product
             try
             {
                 var products = await _productProvider.GetProductsAsync(new Dictionary<string, string>());
-                return products == null ? (ResultStatus.UnknownError, null) : (ResultStatus.Success, products);
+                return products == null
+                    ? (ResultStatus.UnknownError, null)
+                    : (ResultStatus.Success, products.OrderBy(p => p.MerchantProductNo));
             }
             catch (Exception)
             {
