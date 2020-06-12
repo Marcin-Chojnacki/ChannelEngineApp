@@ -23,7 +23,7 @@ namespace CeApp.Services.Product
             _offerProvider = offerProvider;
         }
 
-        public async Task<(ResultStatus, IEnumerable<DataObjects.Product.Product>)> GetProductsAsync(string searchQuery)
+        public async Task<(ResultStatus Status, IEnumerable<DataObjects.Product.Product> Products)> GetProductsAsync(string searchQuery)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace CeApp.Services.Product
             }
         }
 
-        public async Task<(ResultStatus, IEnumerable<Top5Product>)> Get5TopProductsAsync()
+        public async Task<(ResultStatus Status, IEnumerable<Top5Product> Products)> Get5TopProductsAsync()
         {
             try
             {
@@ -80,7 +80,7 @@ namespace CeApp.Services.Product
             }
         }
 
-        public async Task<(ResultStatus, DataObjects.Product.Product)> GetProductAsync(string merchantProductNo)
+        public async Task<(ResultStatus Status, DataObjects.Product.Product Product)> GetProductAsync(string merchantProductNo)
         {
             try
             {
