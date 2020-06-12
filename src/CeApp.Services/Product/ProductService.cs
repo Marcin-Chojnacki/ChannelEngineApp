@@ -103,9 +103,9 @@ namespace CeApp.Services.Product
                     MerchantProductNo = merchantProductNo,
                     Stock = stock
                 };
-                var isSuccess = await _offerProvider.UpdateOfferAsync(offer);
+                await _offerProvider.UpdateOfferAsync(offer);
 
-                return isSuccess ? ResultStatus.Success : ResultStatus.UnknownError;
+                return ResultStatus.Success;
             }
             catch (Exception e)
             {

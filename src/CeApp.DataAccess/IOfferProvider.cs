@@ -5,6 +5,6 @@ namespace CeApp.DataAccess
 {
     public interface IOfferProvider
     {
-        Task<bool> UpdateOfferAsync(Offer offer);
+        Task UpdateOfferAsync(Offer offer);
     }
 }

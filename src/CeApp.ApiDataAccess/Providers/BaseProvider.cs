@@ -9,6 +9,7 @@ namespace CeApp.ApiDataAccess.Providers
 {
     public abstract class BaseProvider
     {
+        protected const int NotFoundCode = 404;
         protected readonly IApiConfig ApiConfig;
         protected readonly HttpClient HttpClient;
 

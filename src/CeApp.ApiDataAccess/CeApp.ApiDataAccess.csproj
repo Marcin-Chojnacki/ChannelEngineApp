@@ -48,17 +48,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseConfigCollection.cs" />
+    <Compile Include="ApiException.cs" />
+    <Compile Include="Config\BaseConfigCollection.cs" />
     <Compile Include="DataModels\OrdersBundle.cs" />
     <Compile Include="DataModels\UpdateResult.cs" />
-    <Compile Include="IApiConfig.cs" />
+    <Compile Include="Config\IApiConfig.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="DataModels\BaseItemResponse.cs" />
     <Compile Include="DataModels\BaseBundleResponse.cs" />
     <Compile Include="DataModels\BaseResponse.cs" />
     <Compile Include="DataModels\ProductItem.cs" />
     <Compile Include="DataModels\ProductsBundle.cs" />
-    <Compile Include="ApiConfig.cs" />
+    <Compile Include="Config\ApiConfig.cs" />
     <Compile Include="Providers\OrderProvider.cs" />
     <Compile Include="Providers\ProductProvider.cs" />
     <Compile Include="Providers\OfferProvider.cs" />
@@ -77,8 +78,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Config\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

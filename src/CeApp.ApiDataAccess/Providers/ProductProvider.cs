@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -22,8 +23,8 @@ namespace CeApp.ApiDataAccess.Providers
             var response = await GetAsync(HttpClient, CreateUrl(mappedFilters, ApiConfig.Products.BasePath));
 
             var productsBundle = JsonConvert.DeserializeObject<ProductsBundle>(response);
-
-            return productsBundle.Success ? productsBundle.Content : Enumerable.Empty<Product>();
+            
+            return productsBundle.Success ? productsBundle.Content : throw new ApiException(response);
         }
 
         public async Task<Product> GetProductAsync(string merchantProductNo)
@@ -32,7 +33,11 @@ namespace CeApp.ApiDataAccess.Providers
 
             var productsBundle = JsonConvert.DeserializeObject<ProductItem>(response);
 
-            return productsBundle.Success ? productsBundle.Content : null;
+            return productsBundle.Success
+                ? productsBundle.Content
+                : productsBundle.StatusCode == NotFoundCode
+                    ? (Product)null
+                    : throw new ApiException(response);
         }
     }
 }

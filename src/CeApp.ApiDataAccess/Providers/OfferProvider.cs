@@ -13,7 +13,7 @@ namespace CeApp.ApiDataAccess.Providers
         {
         }
 
-       public async Task<bool> UpdateOfferAsync(Offer offer)
+       public async Task UpdateOfferAsync(Offer offer)
         {
             var json = JsonConvert.SerializeObject(new[] {offer});
 
@@ -21,7 +21,8 @@ namespace CeApp.ApiDataAccess.Providers
 
             var updateResult = JsonConvert.DeserializeObject<UpdateOfferResult>(response);
 
-            return updateResult.Success;
+            if(!updateResult.Success)
+                throw new ApiException(response);
         }
     }
 }

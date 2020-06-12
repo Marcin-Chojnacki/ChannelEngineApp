@@ -25,7 +25,7 @@ namespace CeApp.ApiDataAccess.Providers
 
             var ordersBundle = JsonConvert.DeserializeObject<OrdersBundle>(response, _orderStatusConverter);
 
-            return ordersBundle.Success ? ordersBundle.Content : Enumerable.Empty<Order>();
+            return ordersBundle.Success ? ordersBundle.Content : throw new ApiException(response);
         }
     }
 }
