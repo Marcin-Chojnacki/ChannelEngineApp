@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CeApp.DataObjects.Order
@@ -74,8 +75,15 @@ namespace CeApp.DataObjects.Order
 
         public static OrderStatus Parse(string name)
         {
-            return All.FirstOrDefault(s => s.Name.Equals(name)) ?? Empty;
+            return All.FirstOrDefault(s => s.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase)) ?? Empty;
         }
+
+        public static OrderStatus ParseDisplayName(string name)
+        {
+            return All.FirstOrDefault(s => s.DisplayName.Equals(name, StringComparison.InvariantCultureIgnoreCase)) ?? Empty;
+        }
+
+        public override string ToString() => DisplayName;
         
         private static readonly List<OrderStatus> All = new List<OrderStatus>
         {

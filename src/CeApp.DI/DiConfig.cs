@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Reflection;
 using System.Web.Mvc;
 using Autofac;
