@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="BaseConfigCollection.cs" />
     <Compile Include="DataModels\OrdersBundle.cs" />
+    <Compile Include="DataModels\UpdateResult.cs" />
     <Compile Include="IApiConfig.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="DataModels\BaseItemResponse.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="ApiConfig.cs" />
     <Compile Include="Providers\OrderProvider.cs" />
     <Compile Include="Providers\ProductProvider.cs" />
+    <Compile Include="Providers\OfferProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -47,7 +47,8 @@ namespace CeApp.DI
         {
             builder.RegisterType<OrderProvider>().As<IOrderProvider>().SingleInstance();
             builder.RegisterType<ProductProvider>().As<IProductProvider>().SingleInstance();
-            builder.RegisterType<ApiConfig>().As<IApiConfig>().SingleInstance(); //todo move
+            builder.RegisterType<OfferProvider>().As<IOfferProvider>().SingleInstance();
+            builder.RegisterType<ApiConfig>().As<IApiConfig>().SingleInstance();
 
             builder.RegisterType<OrderService>().As<IOrderService>();
             builder.RegisterType<ProductService>().As<IProductService>();

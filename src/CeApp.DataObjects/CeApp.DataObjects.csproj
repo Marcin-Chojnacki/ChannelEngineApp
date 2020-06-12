@@ -49,6 +49,7 @@
     <Compile Include="Order\Order.cs" />
     <Compile Include="Order\OrderStatus.cs" />
     <Compile Include="Order\OrderStatusConverter.cs" />
+    <Compile Include="Product\Offer.cs" />
     <Compile Include="Product\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

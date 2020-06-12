@@ -12,6 +12,7 @@ namespace CeApp.ApiDataAccess
 
             Orders = new OrdersConfig(apiConfigSection);
             Products = new ProductsConfig(apiConfigSection);
+            Offer = new OfferConfig();
         }
 
         public string ApiKeyHeader => ConfigurationManager.AppSettings["channelEngineApiKeyHeader"];
@@ -23,6 +24,8 @@ namespace CeApp.ApiDataAccess
         public IOrdersConfig Orders { get; }
 
         public IProductsConfig Products { get; }
+
+        public IOfferConfig Offer { get; }
     }
 
     internal class OrdersConfig : IOrdersConfig
@@ -69,6 +72,11 @@ namespace CeApp.ApiDataAccess
                 return param;
             throw new ArgumentOutOfRangeException(nameof(key), $"Not found following element: {key}");
         }
+    }
+
+    internal class OfferConfig : IOfferConfig
+    {
+        public string BasePath => "offer";
     }
 
     public class ApiConfigSection : ConfigurationSection

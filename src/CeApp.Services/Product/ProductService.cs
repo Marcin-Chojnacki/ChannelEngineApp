@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CeApp.DataAccess;
 using CeApp.DataObjects.Order;
+using CeApp.DataObjects.Product;
 using CeApp.Services.Order;
 using CeApp.Services.Utils;
 
@@ -13,11 +14,13 @@ namespace CeApp.Services.Product
     {
         private readonly IProductProvider _productProvider;
         private readonly IOrderProvider _orderProvider;
+        private readonly IOfferProvider _offerProvider;
 
-        public ProductService(IProductProvider productProvider, IOrderProvider orderProvider)
+        public ProductService(IProductProvider productProvider, IOrderProvider orderProvider, IOfferProvider offerProvider)
         {
             _productProvider = productProvider;
             _orderProvider = orderProvider;
+            _offerProvider = offerProvider;
         }
 
         public async Task<(ResultStatus, IEnumerable<DataObjects.Product.Product>)> GetProductsAsync(string searchQuery)
@@ -33,7 +36,7 @@ namespace CeApp.Services.Product
                     ? (ResultStatus.UnknownError, null)
                     : (ResultStatus.Success, products.OrderBy(p => p.MerchantProductNo));
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //log ex
                 return (ResultStatus.UnknownError, null);
@@ -70,7 +73,7 @@ namespace CeApp.Services.Product
 
                 return (ResultStatus.Success, result);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //log ex
                 return (ResultStatus.UnknownError, null);
@@ -84,10 +87,30 @@ namespace CeApp.Services.Product
                 var product = await _productProvider.GetProductAsync(merchantProductNo);
                 return product == null ? (ResultStatus.NotFound, null) : (ResultStatus.Success, product);
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 //log ex
                 return (ResultStatus.UnknownError, null);
+            }
+        }
+
+        public async Task<ResultStatus> UpdateStockAsync(string merchantProductNo, int stock)
+        {
+            try
+            {
+                var offer = new Offer
+                {
+                    MerchantProductNo = merchantProductNo,
+                    Stock = stock
+                };
+                var isSuccess = await _offerProvider.UpdateOfferAsync(offer);
+
+                return isSuccess ? ResultStatus.Success : ResultStatus.UnknownError;
+            }
+            catch (Exception e)
+            {
+                //log ex
+                return ResultStatus.UnknownError;
             }
         }
     }

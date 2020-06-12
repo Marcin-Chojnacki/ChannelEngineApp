@@ -11,5 +11,7 @@ namespace CeApp.Services.Product
         Task<(ResultStatus, IEnumerable<Top5Product>)> Get5TopProductsAsync();
         
         Task<(ResultStatus Status, DataObjects.Product.Product Product)> GetProductAsync(string merchantProductNo);
+
+        Task<ResultStatus> UpdateStockAsync(string merchantProductNo, int stock);
     }
 }

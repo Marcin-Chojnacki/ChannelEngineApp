@@ -34,9 +34,16 @@ namespace CeApp.Controllers
 
         public async Task<ActionResult> Get(string merchantProductNo)
         {
+
+            if (string.IsNullOrEmpty(merchantProductNo))
+                return RedirectToAction("NotFound", "Error");
+
             var (status, product) = await _productService.GetProductAsync(merchantProductNo);
-            if(status == ResultStatus.Success)
+            if (status == ResultStatus.Success)
+            {
+                LoadMessage();
                 return View(product);
+            }
 
             if (status == ResultStatus.NotFound)
                 return RedirectToAction("NotFound", "Error");
@@ -44,5 +51,41 @@ namespace CeApp.Controllers
             return RedirectToAction("InternalError", "Error");
         }
 
+        [HttpPost]
+        public async Task<ActionResult> UpdateStock(string merchantProductNo, int stock)
+        {
+            if (stock < 0)
+            {
+                AddErrorMessage("Cannot update: Stock cannot be negative number.");
+                return RedirectToAction("Get", new {merchantProductNo});
+            }
+
+            var status = await _productService.UpdateStockAsync(merchantProductNo, stock);
+
+            if (status == ResultStatus.Success)
+                AddSuccessMessage("Product successfully updated.");
+            else
+                AddErrorMessage("Cannot update: Internal error.");
+
+            return RedirectToAction("Get", new { merchantProductNo });
+        }
+
+        private void AddSuccessMessage(string message)
+        {
+            TempData["message"] = message;
+            TempData["messageType"] = "success";
+        }
+
+        private void AddErrorMessage(string message)
+        {
+            TempData["message"] = message;
+            TempData["messageType"] = "danger";
+        }
+
+        private void LoadMessage()
+        {
+            ViewBag.Message = TempData["message"];
+            ViewBag.MessageType = TempData["messageType"];
+        }
     }
 }

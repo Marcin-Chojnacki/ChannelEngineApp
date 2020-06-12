@@ -11,6 +11,8 @@
         IOrdersConfig Orders { get; }
 
         IProductsConfig Products { get; }
+
+        IOfferConfig Offer { get; }
     }
 
     public interface IOrdersConfig
@@ -25,5 +27,10 @@
         string BasePath { get; }
 
         string GetQueryParam(string key);
-        }
+    }
+
+    public interface IOfferConfig
+    {
+        string BasePath { get; }
+    }
 }
