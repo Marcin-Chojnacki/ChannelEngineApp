@@ -28,6 +28,7 @@
             <th>Id</th>
             <th>Order Date</th>
             <th>Status</th>
+            <th>Products</th>
         </tr>
     </thead>
     <tbody>
@@ -37,6 +38,7 @@
                 <td>@order.Id</td>
                 <td>@order.OrderDate</td>
                 <td>@order.Status.DisplayName</td>
+                <td>@string.Join(", ", order.Lines.Select(p => $"{p.MerchantProductNo} ({p.Quantity})"))</td>
             </tr>
         }
     </tbody>

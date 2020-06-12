@@ -21,6 +21,49 @@ namespace CeApp.DataObjects.Order
             Name = "SHIPPED"
         };
 
+        public static readonly OrderStatus InBackOrder = new OrderStatus
+        {
+            DisplayName = "InBackOrder",
+            Name = "IN_BACKORDER"
+        };
+
+        public static readonly OrderStatus Manco = new OrderStatus
+        {
+            DisplayName = "Manco",
+            Name = "MANCO"
+        };
+
+        public static readonly OrderStatus InCombi = new OrderStatus
+        {
+            DisplayName = "InCombi",
+            Name = "IN_COMBI"
+        };
+
+        public static readonly OrderStatus Closed = new OrderStatus
+        {
+            DisplayName = "Closed",
+            Name = "CLOSED"
+        };
+
+        public static readonly OrderStatus New = new OrderStatus
+        {
+            DisplayName = "New",
+            Name = "NEW"
+        };
+
+        public static readonly OrderStatus Returned = new OrderStatus
+        {
+            DisplayName = "Returned",
+            Name = "RETURNED"
+        };
+
+        public static readonly OrderStatus RequiresCorrection = new OrderStatus
+        {
+            DisplayName = "RequiresCorrection",
+            Name = "REQUIRES_CORRECTION"
+
+        };
+
         public static readonly OrderStatus Empty = new OrderStatus
         {
             DisplayName = "",
@@ -33,11 +76,10 @@ namespace CeApp.DataObjects.Order
         {
             return All.FirstOrDefault(s => s.Name.Equals(name)) ?? Empty;
         }
-
-
+        
         private static readonly List<OrderStatus> All = new List<OrderStatus>
         {
-            InProgress, Shipped
+            InProgress, Shipped, InBackOrder, Manco, InCombi, Closed, Returned, RequiresCorrection
         };
     }
 }
